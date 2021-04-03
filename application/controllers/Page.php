@@ -56,18 +56,32 @@ class Page extends CI_Controller{
   function dashboard(){
       if($this->session->userdata('level')!=null){
 
+
+       /* $data['skkp_start_stage_hakim']=$this->SKKP_Hakim_model->getAllDataSync('kp', $this->session->userdata('start_stage'));
+        $data['skmut_start_stage_hakim']=$this->SKMutasi_Hakim_model->getAllDataSync('mutasi', $this->session->userdata('start_stage'));
+        $data['skkp_end_stage_hakim']=$this->SKKP_Hakim_model->getAllDataSync('kp', $this->session->userdata('end_stage'));
+        $data['skmut_end_stage_hakim']=$this->SKMutasi_Hakim_model->getAllDataSync('mutasi', $this->session->userdata('end_stage'));
+        
+
+
+        $data['skkp_start_stage_panitera']=$this->SKKP_model->getAllDataSync('kp', $this->session->userdata('start_stage'));
+        $data['skmut_start_stage_panitera']=$this->SKMutasi_model->getAllDataSync('mutasi', $this->session->userdata('start_stage'));
+        $data['skkp_end_stage_panitera']=$this->SKKP_model->getAllDataSync('kp', $this->session->userdata('end_stage'));
+        $data['skmut_end_stage_panitera']=$this->SKMutasi_model->getAllDataSync('mutasi', $this->session->userdata('start_stage'));
+        */
+
+
         $data['skkp_start_stage_hakim']='50';
-        $data['skmut_start_stage_hakim']='52';
-        $data['skkp_end_stage_hakim']='100';
-        $data['skmut_end_stage_hakim']='101';
+        $data['skmut_start_stage_hakim']='50';
+        $data['skkp_end_stage_hakim']='50';
+        $data['skmut_end_stage_hakim']='50';
         
 
 
         $data['skkp_start_stage_panitera']='50';
-        $data['skmut_start_stage_panitera']='52';
-        $data['skkp_end_stage_panitera']='100';
-        $data['skmut_end_stage_panitera']='101';
-        
+        $data['skmut_start_stage_panitera']='50';
+        $data['skkp_end_stage_panitera']='50';
+        $data['skmut_end_stage_panitera']='50';
         /*if($this->session->userdata('group_name')==='All'){
 
           $this->load->view('admin_template/head');
@@ -76,7 +90,7 @@ class Page extends CI_Controller{
           $this->load->view('admin_template/footer');
         }else{*/
                $this->load->view('admin_template/head');
-          $this->load->view('admin_template/sidebar');
+          $this->load->view('admin_template/sidebar', $data);
           $this->load->view('dashboard', $data);
           $this->load->view('admin_template/footer');
 

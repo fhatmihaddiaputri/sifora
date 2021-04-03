@@ -192,9 +192,9 @@
                                     </a>
                                     <div class="collapse" id="menuMutasiHakim" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="<?php  echo site_url('SKKP/monitoringSK');?>">SK KP</a>
-
-                                            <a class="nav-link" href="<?php  echo site_url('SKKPO/viewDataSK/'.$this->session->userdata('start_stage'));?>">SK KPO</a>
+                                            <a class="nav-link" href="<?php echo site_url('SKKP_Hakim/monitoringSK');?>">SK KP</a>
+                                             <a class="nav-link" href="<?php echo site_url('SKKPO_Hakim/monitoringSK');?>">SK KPO</a>
+                                           
                                             <a class="nav-link" href="register.html">SK Mutasi</a>
                                             <a class="nav-link" href="password.html">Surat-surat</a>
                                         </nav>
@@ -206,9 +206,9 @@
                                     </a>
                                     <div class="collapse" id="menuMutasiPanitera" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="<?php echo site_url('SKKP/viewDataSK/'.$this->session->userdata('start_stage'));?>">SK KP</a>
+                                            <a class="nav-link" href="<?php  echo site_url('SKKP/monitoringSK');//echo site_url('SKKP/viewDataSK/'.$this->session->userdata('start_stage'));?>">SK KP</a>
 
-                                            <a class="nav-link" href="<?php  echo site_url('SKKPO/viewDataSK/'.$this->session->userdata('start_stage'));?>">SK KPO</a>
+                                            <a class="nav-link" href="<?php echo site_url('SKKPO/monitoringSK');// echo site_url('SKKPO/viewDataSK/'.$this->session->userdata('start_stage'));?>">SK KPO</a>
                                             <a class="nav-link" href="register.html">SK Mutasi</a>
                                             <a class="nav-link" href="password.html">Surat-surat</a>
                                         </nav>
@@ -261,11 +261,29 @@
                                     </a>
                                     <div class="collapse" id="menuMutasiEnd" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
+                                             <?php if($this->session->userdata('group_name')==='Panitera'){?>
+                                            <a class="nav-link" href="<?php echo site_url('SKKP/viewDataSK/'.$this->session->userdata('end_stage'));?>">SK KP</a>
+                                            <a class="nav-link" href="<?php  echo site_url('SKKPO/viewDataSK/'.$this->session->userdata('end_stage'));?>">SK KPO</a>
+                                             <a class="nav-link" href="#">SK Mutasi</a>
+                                            <a class="nav-link" href="#">Surat-surat</a>
+                                        <?php }else{?>
+
+                                            <!--Menu Mutasi Hakim-->
+                                            <a class="nav-link" href="<?php echo site_url('SKKP_Hakim/viewDataSK/'.$this->session->userdata('end_stage'));?>">SK KP</a>
+
+                                            <a class="nav-link" href="<?php  echo site_url('SKKPO_Hakim/viewDataSK/'.$this->session->userdata('end_stage'));?>">SK KPO</a>
+                                             <a class="nav-link" href="#">SK Mutasi</a>
+                                            <a class="nav-link" href="#">Surat-surat</a>
+
+                                       <?php }?>
+                                           
+<!--
+
                                             <a class="nav-link" href="<?php echo site_url('SKKP/viewDataSK/'.$this->session->userdata('end_stage'));?>">SK KP</a>
 
-                                            <a class="nav-link" href="<?php  echo site_url('SKKPO/viewDataSK/'.$this->session->userdata('start_stage'));?>">SK KPO</a>
+                                            <a class="nav-link" href="<?php  echo site_url('SKKPO/viewDataSK/'.$this->session->userdata('end_stage'));?>">SK KPO</a>
                                             <a class="nav-link" href="register.html">SK Mutasi</a>
-                                            <a class="nav-link" href="password.html">Surat-surat</a>
+                                            <a class="nav-link" href="password.html">Surat-surat</a>-->
                                         </nav>
                                     </div>
                                   
@@ -296,9 +314,9 @@
                                         <?php }else{?>
 
                                             <!--Menu Mutasi Hakim-->
-                                            <a class="nav-link" href="<?php echo site_url('SKKP/viewDataSK/'.$this->session->userdata('start_stage'));?>">SK KP</a>
+                                            <a class="nav-link" href="<?php echo site_url('SKKP_Hakim/viewDataSK/'.$this->session->userdata('start_stage'));?>">SK KP</a>
 
-                                            <a class="nav-link" href="<?php  echo site_url('SKKPO/viewDataSK/'.$this->session->userdata('start_stage'));?>">SK KPO</a>
+                                            <a class="nav-link" href="<?php  echo site_url('SKKPO_Hakim/viewDataSK/'.$this->session->userdata('start_stage'));?>">SK KPO</a>
                                              <a class="nav-link" href="#">SK Mutasi</a>
                                             <a class="nav-link" href="#">Surat-surat</a>
 
@@ -335,8 +353,8 @@
                                         <?php }else{?>
 
                                             <!--Menu Mutasi Hakim-->
-                                            <a class="nav-link" href="<?php echo site_url('SKKP/monitoringSK');?>">SK KP</a>
-                                             <a class="nav-link" href="<?php echo site_url('SKKPO/monitoringSK');?>">SK KPO</a>
+                                            <a class="nav-link" href="<?php echo site_url('SKKP_Hakim/monitoringSK');?>">SK KP</a>
+                                             <a class="nav-link" href="<?php echo site_url('SKKPO_Hakim/monitoringSK');?>">SK KPO</a>
                                              <a class="nav-link" href="#">SK Mutasi</a>
                                             <a class="nav-link" href="#">Surat-surat</a>
 
