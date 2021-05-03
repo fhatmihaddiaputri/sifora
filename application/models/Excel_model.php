@@ -57,7 +57,7 @@ class Excel_model extends CI_Model
 			*/
 		$sheet->setCellValue('A'.$rows, $val[0]['skpangkatnoid']);
       $sheet->setCellValue('B'.$rows, $val[0]['skpangkatindx']);
-      $sheet->setCellValue('C'.$rows, '\''.$val[0]['nip']);
+      $sheet->setCellValue('C'.$rows, '\''.$val[0]['nip']);//PHPExcel_Cell_DataType::TYPE_STRING
       $sheet->setCellValue('D'.$rows, $val[0]['nama']);
       $sheet->setCellValue('E'.$rows, $val[0]['jabatan']);
       $sheet->setCellValue('F'.$rows, $val[0]['pt']);
