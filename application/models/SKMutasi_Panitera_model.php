@@ -118,6 +118,8 @@ class SKMutasi_Panitera_model extends CI_Model
 
 		}
 
+
+
 	function getWhere($where){
 
 		$db2 = $this->load->database('panitera', TRUE);
@@ -222,6 +224,7 @@ function getWhereDBSync($where, $table){
 					'nip'=>$hasil['nip'],
 					'nama'=>$hasil['nama'],
 					'jabatan_lama'=>$hasil['jablama'],
+					//'jabatan_lama'=>'STAF',
 					'pt_lama'=>$hasil['ptlama'],
 					'pn_lama'=>$pnlama ,
 					'jabatan_baru'=>$hasil['jabbaru'],
@@ -285,7 +288,37 @@ function getWhereDBSync($where, $table){
   		$this->db->select('*');
   		$this->db->from('tbl_skmutasi_panitera');
   		$this->db->join('tbl_user', 'tbl_user.user_id=tbl_skmutasi_panitera.updated_user_id');
+  		$this->db->join('tbl_ref_jenis_sk_mutasi_panitera', 'tbl_ref_jenis_sk_mutasi_panitera.id_jenis=tbl_skmutasi_panitera.id_jenis', 'left outer');
   		$query= $this->db->get();
 		return $query->result_array();
   }
+
+  function uploadLampiran($where,$table, $data){
+
+  	
+  	$this->db->where($where);
+  	$this->db->update($table,$data);
+  }
+
+  function update_data($table, $data, $where){
+	$this->db->where($where);
+	$this->db->update($table, $data);
+  }
+
+	function getJenis(){
+		$this->db->select('id_jenis, jenis');
+	  		$this->db->from('tbl_ref_jenis_sk_mutasi_panitera');
+	  		$query= $this->db->get();
+			return $query->result_array();
+	}
+
+	function getTemplate($id_jenis){
+		$where = array('id_jenis' =>$id_jenis );
+		$this->db->select('*');
+	  		$this->db->from('tbl_ref_jenis_sk_mutasi_panitera');
+	  		$this->db->where($where);
+			$query= $this->db->get();
+	  		return $query->result_array();
+	}
+
 }

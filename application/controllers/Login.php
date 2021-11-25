@@ -24,6 +24,7 @@ class Login extends CI_Controller{
         $user_id  = $data['user_id'];
        
         $name  = $data['user_name'];
+        $nip  = $data['NIP'];
         $email = $data['user_email'];
         $id_jab = $data['user_id_jab'];
         $desc = $data['user_id_jab'];
@@ -76,9 +77,10 @@ class Login extends CI_Controller{
       }
 
         $sesdata = array(
-              'userid'=> $user_id,
+            'userid'=> $user_id,
             'username'  => $name,
             'email'     => $email,
+            'nip'     => $nip,
             'level'     => $level,
             'desc'     => $desc,
             'level_name'=>$level_name,
@@ -181,7 +183,7 @@ class Login extends CI_Controller{
         $config['smtp_port']= "465";
         $config['smtp_timeout']= "5";
         $config['smtp_user']= "subditpaniterajurusita@gmail.com"; //isi dengan email anda
-        $config['smtp_pass']= "1sampai10"; // isi dengan password dari email anda
+        $config['smtp_pass']= "1sampai21"; // isi dengan password dari email anda
         $config['crlf']="\r\n";
         $config['newline']="\r\n";
 
@@ -197,10 +199,10 @@ class Login extends CI_Controller{
         $message.= "<a href='".site_url('login/reset_password/'.$reset_key)."'>klik reset password</a>";
         $this->email->message($message);
         $this->email->send();
-        echo $this->session->set_flashdata('msg','silahkan cek email anda');
-            redirect('login/reset_view');
+       //echo $this->session->set_flashdata('msg','silahkan cek email anda');
+         //   redirect('login/reset_view');
         
-        /*if($this->email->send()){
+        if($this->email->send()){
             echo $this->session->set_flashdata('msg','silahkan cek email anda');
             redirect('login/reset_view');
         }else{
@@ -208,7 +210,7 @@ class Login extends CI_Controller{
            echo $this->session->set_flashdata('error','Gagal mengirim email terjadi error');
            redirect('login/reset_view');
         }
-        */
+        
     }else{
 
       echo $this->session->set_flashdata('error','Email belum terdaftar');

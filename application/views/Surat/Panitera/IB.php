@@ -240,7 +240,7 @@
                         ?>
                         <!-- modal untuk tampil nip-->
                         <div class="modal fade" id="nipModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="width: 100%">
-                          <div class="modal-dialog">
+                          <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                               <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
@@ -323,7 +323,7 @@
                                       ?>
                                       <!-- modal untuk tampil nip-->
                                       <div class="modal fade" id="nipModalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="width: 100%">
-                                        <div class="modal-dialog">
+                                        <div class="modal-dialog modal-lg">
                                           <div class="modal-content">
                                             <div class="modal-header">
                                               <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>

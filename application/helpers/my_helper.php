@@ -37,7 +37,8 @@ function random_strings($length_of_string) {
 if ( ! function_exists('convRupiah')){
 
     function convRupiah($value) {
-      return 'Rp ' . number_format($value).',-';
+     // return 'Rp ' . number_format($value).',-';
+      return 'Rp ' . number_format($value,0,',','.').',-';
     } 
 }  
 if ( ! function_exists('penyebut')){

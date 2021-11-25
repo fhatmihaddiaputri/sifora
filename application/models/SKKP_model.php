@@ -224,7 +224,7 @@ ject(stdClass)#23 (10) { ["id"]=> string(1) "0" ["skpangkatnoid"]=> string(1) "4
   		}else{
 	  		
 			//var_dump($out);
-		$now = new DateTime();
+		  $now = new DateTime();
 	    $update_date= $now->format('Y-m-d H:i:s'); 
 	    $no=1; foreach ($out as $hasil): 
   			$no++;

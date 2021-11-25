@@ -70,6 +70,63 @@
   </div>
 </div>
 
+<!-- end modal-->
+
+<!-- Modal -->
+<?php 
+$no= 1;
+foreach ($skmut as $sk) :
+  $no++;
+ 
+?>
+
+<div class="modal fade" id="editJenis<?php echo $sk['skmutasinoid'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="viewHistory">Form Edit Jenis SK</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+         <form method="POST" action="<?php echo base_url().'SKMutasi_Panitera/editJenis' ?>">
+             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name()?>" value="<?php echo $this->security->get_csrf_hash()?>">
+            
+            <div class="form-group"> 
+                <label>ID Group</label>
+                <input type="text" readonly="true" class="form-control" name="id_group" value="<?php echo $sk['skmutasinoid']?>" id="id_group">
+            </div>  
+            <div class="form-group">
+                <label>Jenis SK</label>
+                  <select class="form-control" name="jenis">
+                  <?php foreach($jenis as $jns){ ?>
+                   
+                  <option value="<?php echo $jns['id_jenis']; ?>"><?php echo $jns['jenis']; ?></option>
+                  <?php } ?>
+                  </select> 
+              </div>
+
+            <button type="reset" class="btn btn-danger" data-dismiss="modal">Batal</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        
+      </div>
+    </div>
+  </div>
+</div>
+<?php endforeach; ?>
+
+<!-- end modal-->
+<?php if(null !==$this->session->flashdata('msg') ):?>
+                                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                   <?php echo $this->session->flashdata('msg');?>
+                                  <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">&times;</button>
+                                </div>
+                              <?php endif;?>
+<?php  if($this->session->userdata('level_name')==='Staf'){  //echo $stage[0]['start_stage'];
+   echo anchor('SKMutasi_Panitera','<div class="btn btn-primary mb-2">Sinkronisasi Group SK Baru</div>'); 
+}?>
 
 
                                 <div class="table-responsive">
@@ -83,7 +140,9 @@
                                                 <th>Tgl SK</th>
                                                 <th>Ket. Biaya</th> 
                                                 <th>Created Date</th>                      
-                                                <th>Keterangan</th>                                                         <th>Action</th>  <th>Action</th> 
+                                                <th>Keterangan</th><th>Jenis</th>
+                                                <th>Action</th>   <?php if($this->session->userdata('level_name')==='Staf'){
+                                                          ?> <th>Action</th><th>Action</th><?php }?>
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -96,7 +155,9 @@
                                                 <th>Tgl SK</th>
                                                 <th>Ket. Biaya</th> 
                                                 <th>Created Date</th>                      
-                                                <th>Keterangan</th>                               <th>Action</th>  <th>Action</th> 
+                                                <th>Keterangan</th>  <th>Jenis</th>                             <th>Action</th>    
+                                                 <?php if($this->session->userdata('level_name')==='Staf'){
+                                                          ?><th>Action</th><th>Action</th><?php }?>
                                             </tr>
                                         </tfoot>
                                         <tbody>
@@ -112,8 +173,16 @@
                                                         <td><?php echo $sk['nama_dipa']; ?></td>
                                                         <td><?php echo $sk['updated_date']; ?></td>
                                                         <td><?php echo $sk['desc']; ?></td>
-                                                        <td><?php echo anchor('SKMutasi_'.$this->session->userdata('group_name').'/listDataGroup/'.$sk['skmutasinoid'],'<div class="btn btn-primary"><i class="fas fa-info-circle" data-toogle="tooltip" title="detail"></i></div>') ?></td>
-                                                        <td onclick="javascript:return confirm('Anda yakin menghapus data ini?')"><?php  echo anchor('SKMutasi_'.$this->session->userdata('group_name').'/drop/'.$sk['skmutasinoid'],'<div class="btn btn-danger"><i class="fas fa-trash" data-toogle="tooltip" title="delete"></i></div>') ?></td>
+                                                         <td><?php echo $sk['jenis']; ?></td>
+                                                        <td><?php echo anchor('SKMutasi_Panitera/listDataGroup/'.$sk['skmutasinoid'],'<div class="btn btn-primary"><i class="fas fa-info-circle" data-toogle="tooltip" title="detail"></i></div>') ?></td>
+                                                        <?php if($this->session->userdata('level_name')==='Staf'){
+                                                          ?>
+                                                        <td onclick="javascript:return confirm('Anda yakin menghapus data ini?')"><?php  echo anchor('SKMutasi_Panitera/drop/'.$sk['skmutasinoid'],'<div class="btn btn-danger"><i class="fas fa-trash" data-toogle="tooltip" title="delete"></i></div>') ?></td>
+                                                        
+                                                        <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editJenis<?php echo $sk['skmutasinoid'];?>">
+                                                                     <i class="far fa-edit" data-toogle="tooltip" title="pilih jenis sk"></i>
+                                                                    </button></td>
+                                                                  <?php }?>
                                                     </tr>
                                             <?php endforeach; ?>
                                             

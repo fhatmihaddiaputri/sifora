@@ -21,7 +21,7 @@
                                 <?php  
 
                                   if($menu==='0'){
-                                  echo anchor('SKMutasi_Panitera/viewDataSK/'.$stage,' <button class="btn btn-primary btn-sm mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Daftar SK Mutasi</button>');
+                                  echo anchor('SKMutasi_Panitera/listDataGroup/'.$id_group_sk,' <button class="btn btn-primary btn-sm mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Daftar SK Mutasi</button>');
                                   }else{
                                        echo anchor('SKMutasi_Panitera/monitoringSK',' <button class="btn btn-primary btn-sm mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Daftar SK Mutasi</button>');
 
