@@ -690,7 +690,7 @@ function generateSKMutasiPanitera($data,$datagroup, $jenis){
 
 		//to specify output directory, specify it as the second argument to the constructor
 		$converter = new OfficeConverter($pathToSave, 'path-to-outdir');
-		unlink($pathToSave);
+		//unlink($pathToSave);
 
 		//$converter = new OfficeConverter('test-file.docx', APPPATH.'docx');
 
@@ -890,7 +890,13 @@ function generateSKMutasiHakim($data,$datagroup, $jenis){
 					$templateProcessor->setValue('Pangkat',$data[0]['pangkat'].'/'.$data[0]['gol_relasi']);
 					$templateProcessor->setValue('Gol',$data[0]['gol']);
 					//$templateProcessor->setValue('Gol',$data[0]['gol']);
-					$templateProcessor->setValue('jablama',$data[0]['jabatan_lama']);
+					$jablama='';
+					if($data['jabatan_lama']==='Hakim'){
+						$jablama='';
+					}else{
+						$jablama=$data[0]['jabatan_lama'].' ';
+					}
+					$templateProcessor->setValue('jablama',$jablama);
 					$templateProcessor->setValue('satkerLama',$satkerLama);
 					$templateProcessor->setValue('NamaPNLama',$pnlama.' ');
 					$templateProcessor->setValue('NamaPTLama',$data[0]['pt_lama']);
@@ -898,9 +904,16 @@ function generateSKMutasiHakim($data,$datagroup, $jenis){
 					$templateProcessor->setValue('kma',$datagroup[0]['kma']);
 					$templateProcessor->setValue('NamaDirjen',$datagroup[0]['dirjen']);
 					$templateProcessor->setValue('NamaDirektur',$datagroup[0]['direktur']);
-					$templateProcessor->setValue('jabbaru',$data[0]['jabatan_baru']);
+					$jabbaru='';
+					if($data['jabatan_baru']==='Hakim'){
+						$jabbaru='';
+					}else{
+						$jabbaru=$data[0]['jabatan_baru'].' ';
+					}
+					$templateProcessor->setValue('jabbaru',$jabbaru);
 					$templateProcessor->setValue('satkerBaru',$satkerBaru);
 					$templateProcessor->setValue('NamaPNBaru',$pnbaru);
+
 					$templateProcessor->setValue('NamaPTBaru',' dan '.$data[0]['pt_baru']);
 					$templateProcessor->setValue('NamaKPPNLama',$data[0]['kppn_lama']);
 					
@@ -909,6 +922,9 @@ function generateSKMutasiHakim($data,$datagroup, $jenis){
 					$templateProcessor->setValue('ejaanLama',terbilang($data[0]['tunjangan']).' rupiah ');
 					$templateProcessor->setValue('tunjanganBaru',convRupiah($data[0]['tunjangan']));
 					$templateProcessor->setValue('ejaanBaru',terbilang($data[0]['tunjangan']).' rupiah ');
+					if($kelasbaru==='Klas I.A.K'){
+						$kelasbaru='Klas I.A.Khusus.';
+					}
 					$templateProcessor->setValue('kelasBaru',$kelasbaru);
 					
 

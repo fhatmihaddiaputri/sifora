@@ -688,4 +688,11 @@ function generateAllSKMutasi($id_group, $jenis_sk){
   }
 
 
+  function deleteSKGroup($id_group_sk){
+      //$this->SKMutasi_Hakim_PN_model->deleteSKGroup($id_group_sk);
+
+
+  }
+
+
 }

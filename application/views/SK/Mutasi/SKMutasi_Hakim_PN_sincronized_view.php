@@ -90,7 +90,7 @@
                                                 <th>Dirjen</th>  
                                                 <th>Ket. Biaya</th> 
                                                 <th>Created Date</th>                   
-                                                <th>Keterangan</th>                                                         <th>Action</th>  <th>Action</th> 
+                                                <th>Keterangan</th>                                                         <th>Action</th>  <th>Action</th>  <th>Action</th> 
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -106,7 +106,7 @@
                                                 <th>Dirjen</th>  
                                                 <th>Ket. Biaya</th> 
                                                 <th>Created Date</th>                      
-                                                <th>Keterangan</th>                               <th>Action</th>  <th>Action</th> 
+                                                <th>Keterangan</th>                               <th>Action</th>  <th>Action</th>  <th>Action</th> 
                                             </tr>
                                         </tfoot>
                                         <tbody>
@@ -127,6 +127,7 @@
                                                         <td><?php echo $sk['desc']; ?></td>
                                                         <td><?php echo anchor('SKMutasi_Hakim_PN/listDataGroup/'.$sk['skmutasinoid'],'<div class="btn btn-primary"><i class="fas fa-info-circle" data-toogle="tooltip" title="detail"></i></div>') ?></td>
                                                         <td onclick="javascript:return confirm('Anda yakin menghapus data ini?')"><?php  echo anchor('SKMutasi_Hakim_PN/drop/'.$sk['skmutasinoid'],'<div class="btn btn-danger"><i class="fas fa-trash" data-toogle="tooltip" title="delete"></i></div>') ?></td>
+                                                         <td onclick="javascript:return confirm('Anda yakin menghapus file SK pada Group ini?')"><?php  echo anchor('SKMutasi_Hakim_PN/deleteSKGroup/'.$sk['skmutasinoid'],'<div class="btn btn-danger"><i class="fas fa-folder-minus" data-toogle="tooltip" title="delete SK Group"></i></div>') ?></td>
                                                     </tr>
                                             <?php endforeach; ?>
                                             
